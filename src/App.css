@@ -1,38 +1,129 @@
-.App {
-  text-align: center;
+body
+{
+    overflow: hidden;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container
+{
+    display: flex;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 150px; 
+    padding-right: 150px; 
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bg
+{
+    height: 100vh;
+    width: 100%;
 }
-
-.App-link {
-  color: #61dafb;
+.logo
+{
+    height: 150px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input
+{
+    border-radius: 20px;
+    padding: 15px;
+    border-bottom-color: orange;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    margin: 10px;
+    width: 400px;
+}
+button
+{
+    margin: 10px;
+    width: 400px;
+}
+button:hover
+{
+    cursor: pointer;
+}
+button:active
+{
+    transform: translateY(5px);
+}
+.lgn_btn
+{
+    background-color: orange;
+    border-radius: 20px;
+    padding: 15px;
+    border: transparent;
+}
+.otp_btn
+{
+    background-color: azure ;
+    border-radius: 20px;
+    padding: 15px;
+    border: transparent;
+}
+@media screen and (max-width:600px)
+{
+    body
+    {
+        overflow: hidden;
+    }
+    .container
+    {
+        display: flex;
+    }
+    .login
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 70px; 
+        padding-right: 70px; 
+    }
+    .bg
+    {
+        height: 100vh;
+        width: 100%;
+    }
+    .logo
+    {
+        height: 150px;
+    }
+    input
+    {
+        border-radius: 15px;
+        padding: 7px;
+        border-bottom-color: orange;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        margin: 5px;
+        width: 300px;
+    }
+    button
+    {
+        margin: 5px;
+        width: 300px;
+    }
+    button:hover
+    {
+        cursor: pointer;
+    }
+    button:active
+    {
+        transform: translateY(5px);
+    }
+    .lgn_btn
+    {
+        background-color: orange;
+        border-radius: 20px;
+        padding: 7px;
+        border: transparent;
+    }
+    .otp_btn
+    {
+        background-color: azure ;
+        border-radius: 20px;
+        padding: 7px;
+        border: transparent;
+    }
 }

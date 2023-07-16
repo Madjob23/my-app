@@ -11,6 +11,7 @@ function App() {
       username: "", password: ""
     })
 
+    // taking Input
     const input = (e) => {
       e.preventDefault()
       const name = e.target.name;
@@ -19,65 +20,71 @@ function App() {
       console.log(name, value)
     }
     
-
+    // Processing Input
     const [records, setRecords] = useState([]);
     const submit = async (e, userInput) => {
       e.preventDefault();
       setRecords(userInput);
-      console.log(records);
+      console.log(records); // just for checking
       try {
-        const response = await axios.post(
-          "https://be-infollion.vercel.app/api/v1/users/login",
+        // sending username and password to API
+        const response = await axios.post(  
+          "https://be-infollion.vercel.app/api/v1/users/login", // API URL
+          // request body
           {
             username: userInput.username,
             password: userInput.password
           }
         );
-  
-        const message = response.data.message
+        // API sends back data that has a message and a token
+
+        // separating the message
+        const message = response.data.message 
         await alert(message)
-  
+        
+        // separating the token and saving it in browser's local storage
         const token = response.data.token;
         localStorage.setItem("token", token);
-        console.log(message);
-  
-        console.log(token);
       } catch (err) {
         console.log(err);
-        alert("An Error occured.")
+        alert("Incorrect Username/Password.")
       }
   
+      // clearing input fields
       setUserInput({
         username: "",
         password: "",
       })
     };
 
-    const otp = async (e) => {
-      let logInWithOtp = prompt("Please Enter Username")
+    // for logging in with OTP
+    const otp = async (e) => {  
+      let username = prompt("Please Enter Username")
       try {
-        const otpPrompt = await axios.post("https://be-infollion.vercel.app/api/v1/users/generate-otp",
+        const fetchOTP = await axios.post("https://be-infollion.vercel.app/api/v1/users/generate-otp",
         {
-          username: logInWithOtp
+          username: username
         }
         );
 
-        const otp = otpPrompt.data.otp
+        const otp = fetchOTP.data.otp
         alert(otp)
 
         const otpEntry = await prompt("Enter OTP")
 
         const otpVerification = await axios.post("https://be-infollion.vercel.app/api/v1/users/verify-otp"
         , {
-          username: logInWithOtp, otp: otpEntry
+          username: username, otp: otpEntry
         });
+
         const msg = otpVerification.data.message;
         alert(msg);
+
         const tkn = otpVerification.data.token;
         localStorage.setItem("tkn", tkn);
       } catch (err) {
         console.log(err);
-        alert("An Error Occured.")
+        alert("Invalid OTP.")
       }
     }
     
